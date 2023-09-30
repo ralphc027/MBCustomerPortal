@@ -3,7 +3,9 @@ package com.mb.application.bankservice.model;
 import java.io.Serializable;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
+@JsonPropertyOrder(alphabetic = true)
 public class GetCustomerResponse extends ResponseInfo implements Serializable{
 
 

@@ -31,7 +31,7 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler{
 	protected ResponseEntity<Object> handleCustomException(CustomAppException ex,
 			HttpServletRequest request) {
 
-		ApiError error = new ApiError(HttpStatus.BAD_REQUEST);
+		ApiError error = new ApiError(ex.getHttpStatus());
 		error.setTransactionStatusCode(ex.getTransactionStatusCode());
 		error.setTransactionStatusDescription(ex.getTransactionStatusDescription());
 		return buildResponseEntity(error);

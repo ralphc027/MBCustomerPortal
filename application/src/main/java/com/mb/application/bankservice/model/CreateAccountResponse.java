@@ -4,7 +4,8 @@ import java.io.Serializable;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
-@JsonPropertyOrder({ "customerNumber", "transactionStatusCode", "transactionStatusDescription" })
+//@JsonPropertyOrder({ "customerNumber", "transactionStatusCode", "transactionStatusDescription" })
+@JsonPropertyOrder(alphabetic = true)
 public class CreateAccountResponse extends ResponseInfo implements Serializable {
 
 

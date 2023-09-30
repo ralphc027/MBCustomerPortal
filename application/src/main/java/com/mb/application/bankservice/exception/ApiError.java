@@ -3,7 +3,9 @@ package com.mb.application.bankservice.exception;
 import org.springframework.http.HttpStatus;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
+@JsonPropertyOrder(alphabetic = true)
 public class ApiError {
 	
 	@JsonIgnore

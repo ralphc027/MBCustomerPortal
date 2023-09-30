@@ -34,7 +34,7 @@ public class AppController {
 	@GetMapping(value = "/api/v1/account/{customerNumber}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public <T> ResponseEntity<T> getUser(@PathVariable(value="customerNumber") int customerNumber, HttpServletRequest httpRequest) throws Exception {
 					
-			return  (ResponseEntity<T>) ResponseEntity.status(HttpStatus.CREATED).contentType(MediaType.APPLICATION_JSON)
+			return  (ResponseEntity<T>) ResponseEntity.status(HttpStatus.FOUND).contentType(MediaType.APPLICATION_JSON)
 					.body(appService.getAccount(httpRequest, customerNumber));		
 	}
 

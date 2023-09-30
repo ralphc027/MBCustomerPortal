@@ -10,6 +10,8 @@ public class CustomAppException extends Exception {
 
 	private static final long serialVersionUID = 7118067073583300856L;
 	
+	
+	private HttpStatus httpStatus;
 
 	private int transactionStatusCode;
 	
@@ -21,6 +23,12 @@ public class CustomAppException extends Exception {
 	public CustomAppException(ResponseInfo responseInfo) {
 		this.transactionStatusCode = responseInfo.getTransactionStatusCode();
 		this.transactionStatusDescription = responseInfo.getTransactionStatusDescription();
+	}
+	
+	public CustomAppException(ResponseInfo responseInfo, HttpStatus httpStatus) {
+		this.transactionStatusCode = responseInfo.getTransactionStatusCode();
+		this.transactionStatusDescription = responseInfo.getTransactionStatusDescription();
+		this.httpStatus = httpStatus;
 	}
 
 	public CustomAppException(HttpStatus status, int transactionStatusCode, String transactionStatusDescription) {
@@ -49,12 +57,21 @@ public class CustomAppException extends Exception {
 	public void setTransactionStatusDescription(String transactionStatusDescription) {
 		this.transactionStatusDescription = transactionStatusDescription;
 	}
-	
+
+	public HttpStatus getHttpStatus() {
+		return httpStatus;
+	}
+
+
+	public void setHttpStatus(HttpStatus httpStatus) {
+		this.httpStatus = httpStatus;
+	}
+
 
 	@Override
 	public String toString() {
-		return "CustomAppException [transactionStatusCode=" + transactionStatusCode
+		return "CustomAppException [httpStatus=" + httpStatus + ", transactionStatusCode=" + transactionStatusCode
 				+ ", transactionStatusDescription=" + transactionStatusDescription + "]";
 	}
-
+	
 }

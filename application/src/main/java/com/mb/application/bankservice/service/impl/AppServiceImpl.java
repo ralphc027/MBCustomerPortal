@@ -42,13 +42,13 @@ public class AppServiceImpl implements AppService{
 		boolean validEmail = EmailValidator.getInstance().isValid(custEmail);
 		if(!validEmail) {
 			responseInfo.setTransactionStatusDescription("Email input is invalid");
-			throw new CustomAppException(responseInfo);
+			throw new CustomAppException(responseInfo, HttpStatus.BAD_REQUEST);
 		}
 		
 		// Validate Account Type
 		if(!accountType.equalsIgnoreCase(Constants.ACC_TYP_Y) && !accountType.equalsIgnoreCase(Constants.ACC_TYP_SAVINGS) && !accountType.equalsIgnoreCase(Constants.ACC_TYP_CHECKING)) {
 			responseInfo.setTransactionStatusDescription("Account Type input is invalid");
-			throw new CustomAppException(responseInfo);
+			throw new CustomAppException(responseInfo, HttpStatus.BAD_REQUEST);
 		}
 		
 		//Set Account
@@ -84,7 +84,7 @@ public class AppServiceImpl implements AppService{
 		
 		// Validate if there is no Customer Found
 		if(customer.isEmpty()) {
-			throw new CustomAppException(responseInfo);
+			throw new CustomAppException(responseInfo, HttpStatus.NOT_FOUND);
 		}
 		
 		// Filter Custoemr Accounts to get Savings accounts
