@@ -1,6 +1,7 @@
 package com.mb.application.bankservice.controller;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -23,7 +24,7 @@ public class AppController {
 	
 	// Creates User Account
 	@PostMapping(value = "/api/v1/account", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public <T> ResponseEntity<T> createUser(@RequestBody CreateAccountRequest createAccountRequest, HttpServletRequest httpRequest) throws Exception {
+	public <T> ResponseEntity<T> createUser(@Valid @RequestBody CreateAccountRequest createAccountRequest, HttpServletRequest httpRequest) throws Exception {
 				
 		return  (ResponseEntity<T>) ResponseEntity.status(HttpStatus.CREATED).contentType(MediaType.APPLICATION_JSON)
 				.body(appService.createAccount(httpRequest, createAccountRequest));		
